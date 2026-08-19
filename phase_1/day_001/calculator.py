@@ -4,14 +4,16 @@ HISTORY = []
 
 def main():
     while True:
-        # Ask if the user wants to see the history
-        his = input("Wanna view the history of calculations? (y/n)").lower()
-        if his == "y":
-            for i in range(len(HISTORY)):
-                print(HISTORY[i])
+        # Ask if the user wants to see the history, only if the history isn't empty
+        if HISTORY:
+            his = input("Wanna view the history of calculations? (y/n)").lower()
+            if his == "y":
+                for i in range(len(HISTORY)):
+                    print(HISTORY[i])
+                print()
 
         # Ask the user for the 1st number, then the operator and then the 2nd number
-        num1 = get_int("\nEnter 1st number: ")
+        num1 = get_int("Enter 1st number: ")
         while True:
             op = input("Enter operation: ")
             if op not in ["+", "-", "*", "/", "**", "%"]:
@@ -24,11 +26,14 @@ def main():
         if res == "":
             HISTORY.append(f"{num1} {op} {num2}")
         else:
-            print(f"\nResult: {res}")
+            print(f"\nResult: {res}\n")
             HISTORY.append(f"{num1} {op} {num2} = {res}")
 
         # Ask the user, and depending on the answer, we'll continue or not
-        con = input("\nDo you want to continue? (y/n): ").lower()
+        con = ""
+        while con not in ["y","n"]:
+            con = input("Do you want to continue? (y/n): ").lower()
+
         if con == "n":
             print("\nGoodbye!")
             break
