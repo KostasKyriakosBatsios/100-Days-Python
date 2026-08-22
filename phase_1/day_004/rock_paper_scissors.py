@@ -1,17 +1,18 @@
-# Day 4 22/8/26!
+# Day 4 22/8/26! (Unfortunately didn't complete it yesterday 21/8/26)
 
 from random import choice
 
+# Initialize tuple about the choice
 CHOICES = ("Rock", "Paper", "Scissors")
 
 def main():
     # Initialize the score
     score_user, score_computer, score_tie = 0, 0, 0
-    print("=== Rock, Paper, Scissors ===\n")
+    print("=== Rock, Paper, Scissors ===")
 
     while True:
         # Ask what the user wants to choose, and then the computer chooses
-        user_pick = get_choice("Choose your move:\n1. Rock\n2. Paper\n3. Sciccors\n\nYour choice: ")
+        user_pick = get_choice("\nChoose your move:\n1. Rock\n2. Paper\n3. Sciccors\n\nYour choice: ")
         computer_pick = choice(["Rock", "Paper", "Scissors"])
 
         # Let's play!
@@ -27,7 +28,7 @@ def main():
 
         # Ask if the user wants to play again!
         con = ""
-        while con not in ["y", "n"]: con = input("Play again? (y/n): ")
+        while con not in ["y", "n"]: con = input("Play again? (y/n): ").lower()
         if con == "n":
             print(f"=== Final Score ===\nPlayer: {score_user}\nComputer: {score_computer}\nTies: {score_tie}\n")
             if score_user > score_computer:
