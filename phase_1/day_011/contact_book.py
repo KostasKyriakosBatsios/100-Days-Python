@@ -2,26 +2,27 @@ import re
 
 PATTERN_NAME_FULL = r"[A-Za-z\s]+"
 PATTERN_NAME = r"[A-Za-z]+"
-PATTERN_PHONE = r"[0-9]+"
-PATTERN_EMAIL = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+PATTERN_PHONE = r"[0-9]{10}"
+PATTERN_EMAIL = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
 
 def main():
   print("=== Contact Book ===")
   option = 0
   contacts = []
   while option != 6:
-    option = get_number("\n1. Add contact\n2. View contacts\n3. Search contact\n4. Edit contact\n5. Delete contact\n6. Exit\n\nContact an option: ")
+    option = get_number("\n1. Add contact\n2. View contacts\n3. Search contact\n4. Edit contact\n5. Delete contact\n6. Exit\n\nChoose an option: ")
     match(option):
       case 1:
         name, phone, email = "", "", ""
-        individual = add_contact(name, phone, email)
-        contacts.append(individual)
-        print("\nContact added successfully!")
+        individual = add_contact(name, phone, email, contacts)
+        if individual is not None:
+          contacts.append(individual)
+          print("\nContact added successfully!")
       case 2:
         length = len(contacts)
         if length != 0:
           for i in range(len(contacts)):
-            print(f"\n{i+1}.\t{contacts[i]["name"]}\n\tPhone: {contacts[i]["phone"]}\n\tEmail: {contacts[i]["email"]}")
+            print(f"\n{i+1}.\t{contacts[i]['name']}\n\tPhone: {contacts[i]['phone']}\n\tEmail: {contacts[i]['email']}")
         else:
           print("\nNo contacts found")
       case 3: search_contact(contacts)
@@ -44,7 +45,7 @@ def get_number(prompt):
 
   return n
 
-def add_contact(n, p, e):
+def add_contact(n, p, e, con):
   c = {}
   
   while not re.fullmatch(PATTERN_NAME_FULL, n): n = input("\nName: ")
@@ -53,7 +54,13 @@ def add_contact(n, p, e):
 
   while not re.fullmatch(PATTERN_EMAIL, e): e = input("\nEmail: ")
 
+  for i in range(len(con)):
+    if n.lower() == con[i]["name"].lower():
+      print("Contact with that name already exists!")
+      return
+
   c["name"], c["phone"], c["email"] = n, p, e
+
   return c
 
 def search_contact(con):
@@ -65,7 +72,7 @@ def search_contact(con):
   for i in range(len(con)):
     if n in con[i]["name"].lower():
       count += 1
-      print(f"Found:\n{i+1}.\t{con[i]["name"]}\n\tPhone: {con[i]["phone"]}\n\tEmail: {con[i]["email"]}")
+      print(f"Found:\n{i+1}.\t{con[i]['name']}\n\tPhone: {con[i]['phone']}\n\tEmail: {con[i]['email']}")
 
   if count == 0: print("Not found")
 
@@ -80,15 +87,15 @@ def edit_contact(con):
       pos = i
       break
     
-  print(f"Current phone: {con[pos]["phone"]}")
+  print(f"Current phone: {con[pos]['phone']}")
   new_phone = ""
   while not re.fullmatch(PATTERN_PHONE, new_phone): new_phone = input("New phone: ")
     
-  print(f"Current email: {con[pos]["email"]}")
+  print(f"Current email: {con[pos]['email']}")
   new_email = ""
   while not re.fullmatch(PATTERN_EMAIL, new_email): new_email = input("New email: ")
     
-  con[pos]["phone"], con[pos]["email"] = new_phone, new_email
+  con[pos]['phone'], con[pos]['email'] = new_phone, new_email
 
   return con
 
@@ -107,7 +114,7 @@ def delete_contact(con):
   answer = ""
   while answer not in ["y", "n"]: answer = input("Are you sure? (y/n): ")
   if answer == "y":
-    if n == con[pos]["name"]:
+    if n == con[pos]['name'].lower():
       con.pop(pos)
       print("Contact deleted successfully!")
     else: print("Contact not found.")
