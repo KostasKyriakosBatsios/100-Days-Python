@@ -87,7 +87,7 @@ def search_item(sl):
   for j in range(len(sl)):
     if i.lower() in sl[j].lower():
       count += 1
-      print(f"Found:\n{j+1}.\t{sl[j]}")
+      print(f"Found '{sl[j]}' in your shopping list.")
 
   if count == 0: print("Not found")
 
