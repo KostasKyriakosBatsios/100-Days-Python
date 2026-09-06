@@ -16,11 +16,18 @@ def main():
         if length != 0:
           print("=== Shopping List Manager ===\n")
           for i in range(len(shopping_list)):
-            print(f"{i+1}. {shopping_list[i]}")
+
+            # Check if an item is being repeated in the list and print the number of times it is repeated, but only print the first instance of the item in the list
+            if shopping_list[i].lower() not in [item.lower() for item in shopping_list[:i]]:
+              count = sum(1 for item in shopping_list if item.lower() == shopping_list[i].lower())
+              if count > 1:
+                print(f"{i+1}. {shopping_list[i]} (x{count})")
+              else:
+                print(f"{i+1}. {shopping_list[i]}")
         else:
           print("\nYour shopping list is empty.")
       case 2:
-        individual = add_item(shopping_list)
+        individual = add_item()
         if individual is not None:
             shopping_list.append(individual)
             print(f"\n'{individual}' added successfully!")
@@ -44,15 +51,10 @@ def get_number(prompt):
 
   return n
 
-def add_item(sl):
+def add_item():
     i = ""
 
     while not re.fullmatch(PATTERN_ITEM, i): i = input("\nEnter item: ")
-
-    for j in range(len(sl)):
-        if i.lower() == sl[j].lower():
-            print("Item already exists!")
-            return None
 
     return i
 
