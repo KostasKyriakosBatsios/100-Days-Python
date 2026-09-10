@@ -35,6 +35,8 @@ def main():
       case 4: update_status(books)
       case 5: delete_book(books)
 
+  # Save all changes to the JSON file before exiting
+  save_books(books)
   print("Goodbye!")
   
 def get_number(prompt):
@@ -81,9 +83,6 @@ def add_book(b):
     case 3: temp["status"] = "Completed"
   b.append(temp)
   print("Book added successfully!")
-
-  # After adding a book, save the updated list to the JSON file
-  save_books(b)
 
 def search_books(b):
   text = ""
@@ -136,9 +135,6 @@ def update_status(b):
       b[pos]['status'] = text
       break
 
-  # After updating the status, save the updated list to the JSON file
-  save_books(b)
-
 def delete_book(b):
   ids = []
   print("=== Your Library ===")
@@ -163,9 +159,6 @@ def delete_book(b):
   if answer == "y":
     print(f"'{b[pos]['title']}' deleted successfully!")
     b.pop(pos)
-
-  # After deleting a book, save the updated list to the JSON file
-  save_books(b)
 
 def save_books(b):
   with open("books.json", "w") as f:

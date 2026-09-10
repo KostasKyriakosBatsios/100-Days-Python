@@ -1,6 +1,11 @@
 [
     {
         "title": "Meditations",
+        "author": "Marcus Aurelius",
+        "status": "Reading"
+    },
+    {
+        "title": "Guide book",
         "author": "Epictitus",
         "status": "Reading"
     }
