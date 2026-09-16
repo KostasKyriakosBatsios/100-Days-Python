@@ -1,3 +1,4 @@
+import json
 import re
 
 PATTERN_TASK = r"[A-Za-z\s]+"
@@ -5,7 +6,11 @@ PATTERN_TASK = r"[A-Za-z\s]+"
 def main():
   print("=== To-Do List ===")
   choice = 0
-  tasks = []
+  try:
+    with open("tasks.json", "r") as f:
+      tasks = json.load(f)
+  except FileNotFoundError:
+    tasks = []
   
   while choice != 5:
     choice = get_int("\n1. View Tasks\n2. Add task\n3. Complete task\n4. Delete task\n5. Exit\n\nChoose an option: ")
@@ -15,6 +20,7 @@ def main():
       case 3: complete_task(tasks)
       case 4: delete_task(tasks)
 
+  save_tasks(tasks)
   print("Goodbye!")
 
 def get_int(prompt):
@@ -90,5 +96,9 @@ def delete_task(t):
     print("\nTask deleted successfully!")
   else:
     print("\nNo tasks found")
+
+def save_tasks(t):
+  with open("tasks.json", "w") as f:
+    json.dump(t, f, indent=4)
 
 main()
