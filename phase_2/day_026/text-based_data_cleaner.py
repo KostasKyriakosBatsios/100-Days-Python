@@ -13,9 +13,7 @@ def main():
     clean = []
     
     while True:
-        option = get_number("\n1. Load raw data\n2. Show cleaned data\n"
-        "3. Show invalid records\n4. Remove duplications\n5. Search records\n"
-        "6. Show statistics\n7. Exit\n\nChoose: ")
+        option = get_number("\n1. Load raw data\n2. Show cleaned data\n3. Show invalid records\n4. Remove duplications\n5. Search records\n6. Show statistics\n7. Exit\n\nChoose: ")
         match(option):
             case 1: clean = load_raw_data(data)
             case 2: show_cleaned_data(clean)
@@ -137,8 +135,7 @@ def show_statistics(c, i, r):
     total = len(c)
     invalid = len(i)
     valid = total - invalid
-    print(f"\nTotal records: {total}\nValid records: {valid}"
-    f"\nInvalid records: {invalid}\nDuplicate records removed: {r}")
+    print(f"\nTotal records: {total}\nValid records: {valid}\nInvalid records: {invalid}\nDuplicate records removed: {r}")
 
 def check_emptiness(c):
     return True if len(c) == 0 else False
