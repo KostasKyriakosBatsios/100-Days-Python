@@ -28,7 +28,7 @@ class Customer:
         print(f"\nID: {self.id}\nName: {self.name}\nBalance: {self.balance}")
     
     def pay(self, amount):
-        self.balance =- amount
+        self.balance -= amount
 
 class Store:
     def __init__(self):
@@ -272,30 +272,18 @@ def main():
     store = Store()
     
     while True:
-        num = get_int("\n1. Show products\n2. Add product\n3. Find product"
-        "\n4. Show customers\n5. Add customer\n6. Find customer\n7. Buy product"
-        "\n8. Restock product\n9. Show statistics\n10. Exit\n\nChoose: ")
+        num = get_int("\n1. Show products\n2. Add product\n3. Find product\n4. Show customers\n5. Add customer\n6. Find customer\n7. Buy product\n8. Restock product\n9. Show statistics\n10. Exit\n\nChoose: ")
         match(num):
-            case 1:
-                store.show_products()
-            case 2:
-                store.add_product()
-            case 3:
-                store.find_product()
-            case 4:
-                store.show_customers()
-            case 5:
-                store.add_customer()
-            case 6:
-                store.find_customer()
-            case 7:
-                store.buy_product()
-            case 8:
-                store.restock_product()
-            case 9:
-                store.statistics()
-            case 10:
-                break
+            case 1: store.show_products()
+            case 2: store.add_product()
+            case 3: store.find_product()
+            case 4: store.show_customers()
+            case 5: store.add_customer()
+            case 6: store.find_customer()
+            case 7: store.buy_product()
+            case 8: store.restock_product()
+            case 9: store.statistics()
+            case 10: break
     
     print("Goodbye!")
 
