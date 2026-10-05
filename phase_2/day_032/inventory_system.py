@@ -237,7 +237,7 @@ def main():
     inventory = Inventory()
     
     while True:
-        num = get_int("\nChoose between 1 and 9: ")
+        num = get_int("\n1. Show products\n2. Add product\n3. Find product\n4. Search products\n5. Sell product\n6. Restock product\n7. Show low-stock products\n8. Show statistics\n9. Exit\n\nSelect an option: ")
         match(num):
             case 1: inventory.show_products()
             case 2: inventory.add_product()
