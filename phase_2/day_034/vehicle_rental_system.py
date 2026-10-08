@@ -14,8 +14,7 @@ class Vehicle:
         self.available = True
     
     def display(self):
-        print(f"\nID: {self.id}\nBrand: {self.brand}\nModel: {self.model}"
-        f"\nDaily rate: {self.daily_rate}\nAvailable: {self.available}")
+        print(f"\nID: {self.id}\nBrand: {self.brand}\nModel: {self.model}\nDaily rate: {self.daily_rate}\nAvailable: {self.available}")
     
     def calculate_rental_cost(self, days):
         return self.daily_rate * days
@@ -326,41 +325,26 @@ class RentalSystem:
             if dr > max_dr:
                 max_dr = dr
             
-        print(f"Total vehicles: {total_v}\nAvailable vehicles: {av_v}\nRented vehicles: {ren_v}"
-        f"\nTotal customers: {total_c}\nMost expensive vehicle: {max_dr}"
-        f"\nAverage daily rental rate: {(sum/total_v):.2f}")
+        print(f"Total vehicles: {total_v}\nAvailable vehicles: {av_v}\nRented vehicles: {ren_v}\nTotal customers: {total_c}\nMost expensive vehicle: {max_dr}\nAverage daily rental rate: {(sum/total_v):.2f}")
 
 def main():
     print("====== VEHICLE RENTAL SYSTEM ======")
     sys = RentalSystem()
     
     while True:
-        num = get_int("\n1. Show vehicles\n2. Add vehicle\n3. Show available vehicles\n4. Find vehicle"
-        "\n5. Show customers\n6. Add customer\n7. Find customer\n8. Rent vehicle\n9. Return vehicle"
-        "\n10. Show statistics\n11. Exit\n\nChoose: ")
+        num = get_int("\n1. Show vehicles\n2. Add vehicle\n3. Show available vehicles\n4. Find vehicle\n5. Show customers\n6. Add customer\n7. Find customer\n8. Rent vehicle\n9. Return vehicle\n10. Show statistics\n11. Exit\n\nChoose: ")
         match(num):
-            case 1:
-                sys.show_vehicles()
-            case 2:
-                sys.add_vehicle()
-            case 3:
-                sys.show_available_vehicles()
-            case 4:
-                sys.find_vehicle()
-            case 5:
-                sys.show_customers()
-            case 6:
-                sys.add_customer()
-            case 7:
-                sys.find_customer()
-            case 8:
-                sys.rent_vehicle()
-            case 9:
-                sys.return_vehicle()
-            case 10:
-                sys.show_statistics()
-            case 11:
-                break
+            case 1: sys.show_vehicles()
+            case 2: sys.add_vehicle()
+            case 3: sys.show_available_vehicles()
+            case 4: sys.find_vehicle()
+            case 5: sys.show_customers()
+            case 6: sys.add_customer()
+            case 7: sys.find_customer()
+            case 8: sys.rent_vehicle()
+            case 9: sys.return_vehicle()
+            case 10: sys.show_statistics()
+            case 11: break
     
     print("\nGoodbye!")
 
