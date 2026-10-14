@@ -11,24 +11,15 @@ def main():
     while True:
         n = get_int("\n1. Show all books.\n2. Add book\n3. Search book\n4. Borrow book\n5. Return book\n6. Show available books\n7. Show borrowed books\n8. Library statistics\n9. Exit\n\nChoose: ")
         match(n):
-            case 1:
-                display_books(books)
-            case 2:
-                add_book(books)
-            case 3:
-                search_book(books)
-            case 4:
-                borrow_book(books)
-            case 5:
-                return_book(books)
-            case 6:
-                show_available_books(books)
-            case 7:
-                show_borrowed_books(books)
-            case 8:
-                statistics(books)
-            case 9:
-                break
+            case 1: display_books(books)
+            case 2: add_book(books)
+            case 3: search_book(books)
+            case 4: borrow_book(books)
+            case 5: return_book(books)
+            case 6: show_available_books(books)
+            case 7: show_borrowed_books(books)
+            case 8: statistics(books)
+            case 9: break
     
     print("Goodbye!")
         
