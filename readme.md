@@ -1,0 +1,1 @@
+Welcome to the 100 Python challenge repository. Here I generate every week from Monday to Friday scripts to sharpen my Python skills for future opportunities!
