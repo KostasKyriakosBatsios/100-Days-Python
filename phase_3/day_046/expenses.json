@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "new clothes",
+        "amount": 67.99,
+        "category": "shopping",
+        "date": "23-11-2026"
+    },
+    {
+        "id": 2,
+        "title": "watch",
+        "amount": 123.44,
+        "category": "shopping",
+        "date": "24-10-2026"
+    },
+    {
+        "id": 3,
+        "title": "gym",
+        "amount": 350.99,
+        "category": "memberships",
+        "date": "25-10-2026"
+    }
+]
