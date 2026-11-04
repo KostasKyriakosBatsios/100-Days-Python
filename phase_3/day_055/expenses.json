@@ -1,0 +1,23 @@
+[
+    {
+        "expense_id": 1,
+        "description": "Tomahawk steak",
+        "category": "Food",
+        "amount": 78.99,
+        "date": "02-03-2022"
+    },
+    {
+        "expense_id": 3,
+        "description": "drinks",
+        "category": "Entertainment",
+        "amount": 37.5,
+        "date": "03-11-2026"
+    },
+    {
+        "expense_id": 2,
+        "description": "HP Probook G1",
+        "category": "Education",
+        "amount": 569.43,
+        "date": "02-03-2024"
+    }
+]
